@@ -1,0 +1,14 @@
+.footer_loader_ani {
+  background-color: white;
+  animation: footer_loader 1s ease-in;
+  bottom: 0%;
+}
+
+@keyframes footer_loader {
+  0% {
+    bottom: -10%;
+  }
+  100% {
+    bottom: 0%;
+  }
+} /*# sourceMappingURL=main.css.map */
