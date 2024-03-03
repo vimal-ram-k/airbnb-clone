@@ -9,7 +9,6 @@ function App() {
 
   const footer_nav = () => {
     const footer_navigationbar = document.getElementById("footer_navigation");
-    console.log(pagePositon);
     if (!scrollup) {
       footer_navigationbar?.classList.remove("position-fixed");
     } else {
@@ -20,7 +19,6 @@ function App() {
   useEffect(() => {
     const handle = () => {
       const currentPosition = window.scrollY;
-      console.log(currentPosition);
       setScrollup(currentPosition < pagePositon);
       setPageposition(currentPosition);
     };

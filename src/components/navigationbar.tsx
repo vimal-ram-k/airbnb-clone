@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import search_logo from "../assets/nav-logos/icons8-search.svg";
@@ -8,11 +7,10 @@ import airbnb_name_logo from "../assets/airbnb-logo/airbnb-ar21.svg";
 import global_logo from "../assets/nav-logos/icons8-global-48.png";
 import menu_bar from "../assets/nav-logos/icons8-menu-bar.svg";
 import user_profile_logo from "../assets/nav-logos/icons8-user-profile-48.png";
-import LocationFilter from "./locationfilter";
-
 import { AddDetails } from "./addfilterdetails";
+import Useroptions from "./useroptions";
 
-function Navigationbar() {
+const Navigationbar = () => {
   const [searchDetails, setSearchDetails] = useState({
     location: "Anywhere",
     travel_date: "Any week",
@@ -27,10 +25,15 @@ function Navigationbar() {
   }
 
   const [addDetailsMenu, setAddDetailsMenu] = useState(false);
-
+  const [userOptionShow, setUserOptionShow] = useState(false);
   function HandleMenuFilter() {
     setAddDetailsMenu((prevAddDetailsmenu) => !prevAddDetailsmenu);
   }
+
+  function HandleUserOptionShow() {
+    setUserOptionShow((prevUserOptionShow) => !prevUserOptionShow);
+  }
+
   return (
     <div className=" border-bottom" style={{}}>
       <div
@@ -123,7 +126,7 @@ function Navigationbar() {
                 <li className=" list-unstyled">
                   <img src={menu_bar} width={20} alt="" />
                 </li>
-                <li className=" list-unstyled">
+                <li className=" list-unstyled " onClick={HandleUserOptionShow}>
                   <img src={user_profile_logo} width={30} alt="" />
                 </li>
               </ul>
@@ -131,6 +134,8 @@ function Navigationbar() {
           </ul>
         </div>
       </div>
+      {userOptionShow && <Useroptions />}
+
       {addDetailsMenu && (
         <AddDetails
           func={HandleMenuFilter}
@@ -140,62 +145,62 @@ function Navigationbar() {
       )}
     </div>
   );
-}
-
-const LargeScreenFilter = () => {
-  return (
-    <div
-      className="d-none d-md-block bg-secondary-subtle container-fluid  px-5  border py-3"
-      style={{ height: "90px" }}
-    >
-      <div className="">
-        <ul className="d-flex justify-content-center  p-0 m-0">
-          <li className=" list-unstyled border bg-white h-100 rounded-5">
-            <h1 className=" fw-medium fs-6 m-0">Where</h1>
-            <input
-              type="text"
-              placeholder=" Search destinations"
-              className=" border-0 bg-transparent"
-              style={{ outline: "0px" }}
-            />
-          </li>
-          <li className=" list-unstyled">
-            <h1 className=" fw-medium fs-6 m-0">Check in</h1>
-            <input
-              type="text"
-              placeholder="Add dates"
-              className=" border-0 bg-transparent"
-              style={{ outline: "0px" }}
-            />
-          </li>
-          <li className=" list-unstyled">
-            <h1 className=" fw-medium fs-6 m-0">Check out</h1>
-            <input
-              type="text"
-              placeholder="Add dates"
-              className=" border-0 bg-transparent"
-              style={{ outline: "0px" }}
-            />
-          </li>
-          <li className=" list-unstyled">
-            <h1 className=" fw-medium fs-6 m-0">Who</h1>
-            <input
-              type="text"
-              placeholder="Add guest"
-              className=" border-0 bg-transparent"
-              style={{ outline: "0px" }}
-            />
-          </li>
-          <li className=" list-unstyled">
-            <button className=" border-0 bg-danger px-3 rounded-5 py-3 d-flex align-items-center column-gap-2">
-              <img src={search_logo} width={20} alt="" />
-              <h1 className=" fw-medium fs-6 m-0 text-white ">Search</h1>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  );
 };
+
+// const LargeScreenFilter = () => {
+//   return (
+//     <div
+//       className="d-none d-md-block bg-secondary-subtle container-fluid  px-5  border py-3"
+//       style={{ height: "90px" }}
+//     >
+//       <div className="">
+//         <ul className="d-flex justify-content-center  p-0 m-0">
+//           <li className=" list-unstyled border bg-white h-100 rounded-5">
+//             <h1 className=" fw-medium fs-6 m-0">Where</h1>
+//             <input
+//               type="text"
+//               placeholder=" Search destinations"
+//               className=" border-0 bg-transparent"
+//               style={{ outline: "0px" }}
+//             />
+//           </li>
+//           <li className=" list-unstyled">
+//             <h1 className=" fw-medium fs-6 m-0">Check in</h1>
+//             <input
+//               type="text"
+//               placeholder="Add dates"
+//               className=" border-0 bg-transparent"
+//               style={{ outline: "0px" }}
+//             />
+//           </li>
+//           <li className=" list-unstyled">
+//             <h1 className=" fw-medium fs-6 m-0">Check out</h1>
+//             <input
+//               type="text"
+//               placeholder="Add dates"
+//               className=" border-0 bg-transparent"
+//               style={{ outline: "0px" }}
+//             />
+//           </li>
+//           <li className=" list-unstyled">
+//             <h1 className=" fw-medium fs-6 m-0">Who</h1>
+//             <input
+//               type="text"
+//               placeholder="Add guest"
+//               className=" border-0 bg-transparent"
+//               style={{ outline: "0px" }}
+//             />
+//           </li>
+//           <li className=" list-unstyled">
+//             <button className=" border-0 bg-danger px-3 rounded-5 py-3 d-flex align-items-center column-gap-2">
+//               <img src={search_logo} width={20} alt="" />
+//               <h1 className=" fw-medium fs-6 m-0 text-white ">Search</h1>
+//             </button>
+//           </li>
+//         </ul>
+//       </div>
+//     </div>
+//   );
+// };
 
 export default Navigationbar;

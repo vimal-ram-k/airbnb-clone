@@ -12,7 +12,7 @@ interface hotel_details_props {
 }
 function Mobview({ props }: { props: hotel_details_props }) {
   return (
-    <div className=" pb-5 col-md-6 col-lg-4 col-xl-4 col-xxl-2">
+    <div className=" pb-5 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
       <div
         className=" rounded-4"
         style={{

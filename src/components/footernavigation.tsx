@@ -1,4 +1,3 @@
-import React from "react";
 import heart_logo from "../assets/compoent-logos/icons8-heart-50.png";
 import search_logo from "../assets/nav-logos/icons8-search.svg";
 import user_logo from "../assets/nav-logos/icons8-user-profile-48.png";
@@ -8,7 +7,7 @@ import "../custom-styles/animation.css";
 function Footernavigation() {
   return (
     <div
-      className=" w-100 container-fluid  footer_loader_ani"
+      className=" d-md-none w-100 container-fluid  footer_loader_ani"
       id="footer_navigation"
       style={{ height: "80px" }}
     >

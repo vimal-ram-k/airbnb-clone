@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cross_logo from "../assets/nav-logos/cross-23.svg";
 import search_logo from "../assets/nav-logos/icons8-search.svg";
 import map from "../assets/map-filter-image/high-quality-map-of-tamil-nadu-is-a-state-of-india-with-borders-of-the-districts-T4WYDD.jpg";
 import LocationFilter from "./locationfilter";
-
 type searchDetailsProps = {
   location: string;
   travel_date: string;
@@ -24,16 +23,43 @@ export const AddDetails = ({
   const [addguest, setAddguest] = useState(false);
   const [locationFilter, setLocationFilter] = useState(false);
 
-  const [guestlist, setGuestList] = useState({
-    adult: 0,
-    children: 0,
-    infants: 0,
-    pets: 0,
-  });
-
   function locationFilterHandler() {
     setLocationFilter((prevLocationFilterState) => !prevLocationFilterState);
   }
+
+  useEffect(() => {
+    console.log("Hi");
+    const handleMouseEnter = () => {
+      window.addEventListener("scroll", disableScroll);
+      window.addEventListener("touchmove", disableScroll);
+    };
+
+    const handleMouseLeave = () => {
+      window.removeEventListener("scroll", disableScroll);
+      window.removeEventListener("touchmove", disableScroll);
+    };
+
+    const disableScroll = () => {
+      window.scrollTo(0, 0);
+    };
+
+    const component = document.getElementById("remove_scroll");
+    component?.addEventListener("mouseenter", handleMouseEnter);
+    component?.addEventListener("touchmove", handleMouseEnter);
+
+    component?.addEventListener("mouseleave", handleMouseLeave);
+    component?.addEventListener("touchmove", handleMouseEnter);
+
+    return () => {
+      component?.removeEventListener("mouseenter", handleMouseEnter);
+      component?.removeEventListener("touchmove", handleMouseEnter);
+
+      component?.removeEventListener("mouseleave", handleMouseLeave);
+      component?.removeEventListener("touchmove", handleMouseLeave);
+
+      window.removeEventListener("scroll", disableScroll);
+    };
+  }, []);
 
   return (
     <div className=" d-md-none position-absolute bg-secondary-subtle top-0 px-3 pt-3 h-100 z-3 w-100 overflow-hidden ">
@@ -63,6 +89,7 @@ export const AddDetails = ({
         className={`bg-white rounded-3 p-3  ${
           searchDetails.location !== "Anywhere" ? "visually-hidden" : ""
         }`}
+        id="remove_scroll"
       >
         <h1 className=" fw-semibold" style={{ fontSize: "1.4rem" }}>
           Where to?
@@ -176,6 +203,7 @@ export const AddDetails = ({
               {days.map((items, index) => {
                 return (
                   <li
+                    key={items + index}
                     className=" col-1 list-unstyled fw-light"
                     style={{ fontSize: "0.8rem" }}
                   >
@@ -208,7 +236,6 @@ export const AddDetails = ({
         <LocationFilter
           locationFilterHandler={locationFilterHandler}
           setdetails={setdetails}
-          setLocationFilter={setLocationFilter}
         />
       )}
 

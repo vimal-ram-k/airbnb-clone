@@ -1,8 +1,7 @@
-import { useState } from "react";
 import search_logo from "../assets/nav-logos/icons8-search.svg";
 import india_state_list from "../api/location.json";
 import filter_map_logo from "../assets/filter-logo/location-svgrepo-com.svg";
-
+import { useState } from "react";
 const LocationFilter = ({
   setdetails,
   locationFilterHandler,
@@ -48,7 +47,7 @@ const LocationFilter = ({
                 .map((items, index) => {
                   return (
                     <li
-                      className=" list-unstyled  p-2 d-flex align-items-center column-gap-3"
+                      className=" list-unstyled  p-2 d-flex align-items-center column-gap-3 location_seleted"
                       key={items + index}
                       value={items}
                       onClick={() => {
@@ -72,5 +71,4 @@ const LocationFilter = ({
     </div>
   );
 };
-
 export default LocationFilter;

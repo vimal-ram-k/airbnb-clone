@@ -1,3 +1,20 @@
 @import url("../../node_modules/bootstrap/scss/_variables.scss");
 @import url("../../node_modules/bootstrap/scss/_functions.scss");
 @import url("../../node_modules/bootstrap/scss/bootstrap.scss");
+.footer_loader_ani {
+  background-color: black;
+  animation: footer_loader 5s ease-in;
+}
+
+@keyframes footer_loader {
+  0% {
+    bottom: -50px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+.location_seleted:hover {
+  background-color: gray;
+  cursor: pointer;
+}/*# sourceMappingURL=main.css.map */

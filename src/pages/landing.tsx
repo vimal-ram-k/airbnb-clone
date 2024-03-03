@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Mobview from "../components/mobview";
 import data from "../api/hotel.json";
 
